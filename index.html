@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffe1ea">
+<title>היי יפה שלי 💕</title>
+<style>
+:root{--pink:#ff7fa5;--rose:#e8456b;--blush:#ffe1ea;--pastel:#ffc2d4;--cream:#fff7f9;--ink:#7a2840;--mint:#7fd8a8;--mint-d:#3cae78}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow-x:hidden}
+body{font-family:"Arial Rounded MT Bold","Varela Round","Segoe UI",system-ui,-apple-system,"Arial Hebrew",Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 20% 10%,#fff 0,transparent 40%),radial-gradient(circle at 85% 90%,#ffd3e1 0,transparent 45%),linear-gradient(160deg,#ffeef3,#ffd6e3 60%,#ffc2d4);background-attachment:fixed;
+padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.fl{position:absolute;bottom:-40px;will-change:transform,opacity;animation:rise linear forwards;opacity:0}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.8}100%{transform:translateY(-115vh) rotate(40deg);opacity:0}}
+.fall{position:absolute;top:-30px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(112vh) rotate(540deg)}}
+.screen{position:relative;z-index:1;min-height:100dvh;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 18px;gap:14px}
+.screen.on{display:flex;animation:pop .7s cubic-bezier(.34,1.4,.5,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(2.2rem,9vw,3.6rem);margin:0;line-height:1.2;color:var(--rose);text-shadow:0 3px 0 #fff,0 8px 20px #ff7fa555}
+h2{font-size:clamp(1.5rem,6vw,2.3rem);margin:0;line-height:1.3;color:var(--rose)}
+p{margin:0;font-size:clamp(1.05rem,4.2vw,1.4rem);line-height:1.5}
+.sub{opacity:.85}
+.cat{width:min(62vw,250px);height:auto;filter:drop-shadow(0 10px 14px #e8456b33)}
+.bob{animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-2deg)}}
+.beat{animation:beat 1.2s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes beat{50%{transform:scale(1.2)}}
+button,.btn{font:inherit;font-size:clamp(1.1rem,4.5vw,1.35rem);border:0;border-radius:999px;padding:.85em 1.7em;cursor:pointer;color:#fff;background:linear-gradient(180deg,#ff8fb1,var(--rose));box-shadow:0 6px 0 #b82d52,0 12px 22px #e8456b55;transition:transform .15s,box-shadow .15s;touch-action:manipulation;-webkit-user-select:none;user-select:none;text-decoration:none;display:inline-block;min-height:52px}
+button:active,.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #b82d52}
+button:focus-visible,.btn:focus-visible{outline:4px solid #fff;outline-offset:3px}
+#yes{background:linear-gradient(180deg,#8fe8b8,var(--mint-d));box-shadow:0 6px 0 #26805a,0 12px 22px #3cae7855;font-size:clamp(1.3rem,5.5vw,1.7rem);animation:wig 2s ease-in-out infinite}
+#yes:active{box-shadow:0 2px 0 #26805a}
+@keyframes wig{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+#no{background:linear-gradient(180deg,#ff9aa8,#d94560);box-shadow:0 5px 0 #a02a40}
+#no.run{position:fixed;z-index:50;margin:0;transition:left .38s cubic-bezier(.34,1.56,.5,1),top .38s cubic-bezier(.34,1.56,.5,1)}
+.btns{display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:10px}
+.nowrap{display:inline-block}
+#msg{min-height:2.8em;font-size:clamp(1.05rem,4.4vw,1.35rem);color:var(--rose);display:flex;align-items:center;justify-content:center}
+#msg span{animation:pop .35s both;background:#fff9;border-radius:18px;padding:.35em .9em}
+.card{background:#fffc;border-radius:32px;padding:24px 20px;box-shadow:0 14px 40px #e8456b2e;max-width:520px;width:100%;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.opt{background:#fff;color:var(--ink);box-shadow:0 4px 0 #f3b3c6,0 8px 16px #e8456b22;border:3px solid transparent;font-size:clamp(1rem,4vw,1.2rem);padding:.9em .5em;border-radius:24px;line-height:1.3}
+.opt:active{box-shadow:0 1px 0 #f3b3c6}
+.opt.sel{border-color:var(--rose);background:#fff0f4;transform:scale(1.04)}
+.opt b{display:block;font-size:2rem;font-weight:400}
+#choiceMsg{min-height:3.2em;margin:8px 0;font-weight:700;color:var(--rose)}
+.wa{background:linear-gradient(180deg,#5fe08a,#1fa855);box-shadow:0 6px 0 #14783b,0 12px 22px #1fa85544;margin-top:6px}
+.wa[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="fx" aria-hidden="true"></div>
+
+<!-- 1. פתיחה -->
+<main class="screen on" id="s1">
+  <h1>היי יפה שלי 🥹💕</h1>
+  <p class="sub">יש לי שאלה ממש חשובה לשאול אותך…</p>
+  <svg class="cat bob" viewBox="0 0 200 200" role="img" aria-label="חתלתול חמוד עם לבבות">
+    <path d="M150 165c40-5 45-45 22-60" fill="none" stroke="#e9a46f" stroke-width="14" stroke-linecap="round"/>
+    <ellipse cx="100" cy="150" rx="48" ry="38" fill="#ffd9b3" stroke="#d98a6a" stroke-width="3"/>
+    <ellipse cx="100" cy="158" rx="28" ry="24" fill="#fff4ec"/>
+    <polygon points="52,70 58,22 92,50" fill="#ffd9b3" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="148,70 142,22 108,50" fill="#ffd9b3" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="60,58 62,36 78,50" fill="#ffaabf"/><polygon points="140,58 138,36 122,50" fill="#ffaabf"/>
+    <ellipse cx="100" cy="88" rx="55" ry="48" fill="#ffd9b3" stroke="#d98a6a" stroke-width="3"/>
+    <path d="M85 50q4 12 0 20M100 46v22M115 50q-4 12 0 20" stroke="#e9a46f" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <ellipse cx="80" cy="88" rx="9" ry="11" fill="#5a2a3a"/><ellipse cx="120" cy="88" rx="9" ry="11" fill="#5a2a3a"/>
+    <circle cx="83" cy="84" r="3.5" fill="#fff"/><circle cx="123" cy="84" r="3.5" fill="#fff"/>
+    <ellipse cx="66" cy="104" rx="9" ry="6" fill="#ff9db8" opacity=".7"/><ellipse cx="134" cy="104" rx="9" ry="6" fill="#ff9db8" opacity=".7"/>
+    <path d="M94 100l6 6 6-6z" fill="#ff7fa5"/><path d="M100 106q-6 10-14 4M100 106q6 10 14 4" fill="none" stroke="#a5576b" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M42 96l-22-4M42 104l-22 6M158 96l22-4M158 104l22 6" stroke="#c98e78" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse cx="82" cy="150" rx="13" ry="10" fill="#fff4ec" stroke="#d98a6a" stroke-width="3"/><ellipse cx="118" cy="150" rx="13" ry="10" fill="#fff4ec" stroke="#d98a6a" stroke-width="3"/>
+    <path class="beat" d="M100 168c-14-10-20-18-12-24 5-4 10-1 12 3 2-4 7-7 12-3 8 6 2 14-12 24z" fill="#e8456b"/>
+    <path class="beat" d="M28 40c-8-6-11-11-7-15 3-2 6-1 7 2 1-3 4-4 7-2 4 4 1 9-7 15z" fill="#ff7fa5"/>
+    <path class="beat" d="M172 36c-8-6-11-11-7-15 3-2 6-1 7 2 1-3 4-4 7-2 4 4 1 9-7 15z" fill="#ff7fa5" style="animation-delay:.5s"/>
+  </svg>
+  <button id="ask">תשאל אותי כבר 🙄💗</button>
+</main>
+
+<!-- 2. השאלה -->
+<main class="screen" id="s2">
+  <h2>אהבת חיי, נגה שלי 💕</h2>
+  <h1 style="font-size:clamp(1.9rem,8vw,3rem)">את רוצה לצאת איתי לדייט? 🌹🥹</h1>
+  <div id="msg" aria-live="polite"></div>
+  <div class="btns">
+    <button id="yes">כןןןן ❤️</button>
+    <span class="nowrap" id="nowrap"><button id="no">לא 🙄</button></span>
+  </div>
+</main>
+
+<!-- 3. כן! -->
+<main class="screen" id="s3">
+  <svg class="cat bob" style="width:min(74vw,300px)" viewBox="0 0 240 250" role="img" aria-label="חתול חמוד מחזיק זר פרחים">
+    <path d="M170 215c50-5 55-55 24-72" fill="none" stroke="#e9a46f" stroke-width="15" stroke-linecap="round"/>
+    <ellipse cx="120" cy="190" rx="55" ry="48" fill="#ffd9b3" stroke="#d98a6a" stroke-width="3"/>
+    <polygon points="62,84 68,30 106,62" fill="#ffd9b3" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="178,84 172,30 134,62" fill="#ffd9b3" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="71,70 73,44 90,60" fill="#ffaabf"/><polygon points="169,70 167,44 150,60" fill="#ffaabf"/>
+    <ellipse cx="120" cy="104" rx="60" ry="52" fill="#ffd9b3" stroke="#d98a6a" stroke-width="3"/>
+    <path d="M104 62q4 12 0 22M120 58v24M136 62q-4 12 0 22" stroke="#e9a46f" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M85 104q10-14 20 0M135 104q10-14 20 0" fill="none" stroke="#5a2a3a" stroke-width="4.5" stroke-linecap="round"/>
+    <ellipse cx="78" cy="122" rx="10" ry="6.5" fill="#ff9db8" opacity=".75"/><ellipse cx="162" cy="122" rx="10" ry="6.5" fill="#ff9db8" opacity=".75"/>
+    <path d="M114 116l6 6 6-6z" fill="#ff7fa5"/><path d="M104 126q16 22 32 0z" fill="#c8405f"/><path d="M112 134q8 6 16 0" fill="#ff9db8"/>
+    <path d="M60 112l-26-5M60 122l-26 8M180 112l26-5M180 122l26 8" stroke="#c98e78" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- bouquet -->
+    <path d="M120 232L84 160h72z" fill="#fff" stroke="#ffb3c8" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M120 232L98 160h22z" fill="#ffe1ea"/>
+    <path d="M104 162q-14-24-30-30M136 162q14-24 30-30M120 160v-34" stroke="#3cae78" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <ellipse cx="78" cy="140" rx="12" ry="6" fill="#5fcf90" transform="rotate(-30 78 140)"/><ellipse cx="162" cy="140" rx="12" ry="6" fill="#5fcf90" transform="rotate(30 162 140)"/>
+    <g stroke="#a02a40" stroke-width="2" fill="none"><circle cx="120" cy="136" r="17" fill="#e8456b"/><path d="M120 136m-6 0a6 6 0 1 1 6 6M112 128q8-6 16 0"/>
+    <circle cx="94" cy="148" r="14" fill="#ff7fa5"/><path d="M94 148m-5 0a5 5 0 1 1 5 5"/>
+    <circle cx="146" cy="148" r="14" fill="#ff5a82"/><path d="M146 148m-5 0a5 5 0 1 1 5 5"/>
+    <circle cx="106" cy="126" r="11" fill="#ffb3c8"/><circle cx="136" cy="124" r="11" fill="#ff9db8"/></g>
+    <ellipse cx="98" cy="196" rx="14" ry="11" fill="#fff4ec" stroke="#d98a6a" stroke-width="3"/><ellipse cx="142" cy="196" rx="14" ry="11" fill="#fff4ec" stroke="#d98a6a" stroke-width="3"/>
+    <path class="beat" d="M30 70c-9-7-13-13-8-17 3-3 7-1 8 2 1-3 5-5 8-2 5 4 1 10-8 17z" fill="#e8456b"/>
+    <path class="beat" d="M208 60c-9-7-13-13-8-17 3-3 7-1 8 2 1-3 5-5 8-2 5 4 1 10-8 17z" fill="#ff7fa5" style="animation-delay:.4s"/>
+    <path class="beat" d="M214 200c-7-5-10-10-6-13 2-2 5-1 6 2 1-3 4-4 6-2 4 3 1 8-6 13z" fill="#ff5a82" style="animation-delay:.8s"/>
+  </svg>
+  <h1>ידעתי שתבחרי כןןןן!!! 😭❤️</h1>
+  <p>זכיתי בחברה הכי יפה בעולם 🥹🌷</p>
+  <p>אז יפה שלי, הדייט שלנו יוצא לדרך! 💋</p>
+  <h2 style="font-size:clamp(1.3rem,5vw,1.8rem)">נגה שלי, אני אוהב אותך הכי בעולם ❤️</h2>
+  <button id="plan" style="font-size:clamp(1.2rem,5vw,1.5rem);margin-top:8px">יאללה, מתכננים את הדייט שלנו? 💌</button>
+</main>
+
+<!-- 4. תכנון -->
+<main class="screen" id="s4">
+  <div class="card">
+    <h2>איזה דייט בא לך, יפה שלי? 🥰</h2>
+    <p class="sub" style="margin:6px 0 10px">בחרי את מה שהלב שלך רוצה</p>
+    <div class="opts">
+      <button class="opt" data-k="דייט רומנטי עם יין" data-m="דייט רומנטי, אור נרות ואני ואת. את הולכת להתאהב מחדש 🍷💕"><b>🍷</b>דייט רומנטי</button>
+      <button class="opt" data-k="סרט ואוכל טעים" data-m="סרט, אוכל טעים וחיבוק על הספה. אני מביא פופקורן, את מביאה את החיוך 🍿😍"><b>🍿</b>סרט ואוכל טעים</button>
+      <button class="opt" data-k="טיול בשקיעה" data-m="טיול בשקיעה יד ביד, ושמיים ורודים שמתאימים בדיוק לך 🌅💗"><b>🌅</b>טיול בשקיעה</button>
+      <button class="opt" data-k="הפתעה סודית" data-m="הפתעה סודית! אני לא מגלה כלום, רק תבואי עם חיוך 🎁🤫"><b>🎁</b>הפתעה סודית</button>
+    </div>
+    <p id="choiceMsg" aria-live="polite"></p>
+    <a class="btn wa" id="wa" hidden target="_blank" rel="noopener">שלחי לי בוואטסאפ 💬</a>
+  </div>
+</main>
+
+<script>
+(function(){
+"use strict";
+var $=function(i){return document.getElementById(i)};
+var fx=$("fx"),calm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+var rnd=function(a,b){return a+Math.random()*(b-a)};
+
+/* ===== רקע צף ===== */
+var floaters=["💗","💕","🌸","🌷","💖","🌹","🤍"];
+function floaty(){
+  if(calm||fx.children.length>26)return;
+  var e=document.createElement("span");e.className="fl";
+  e.textContent=floaters[Math.floor(Math.random()*floaters.length)];
+  e.style.left=rnd(0,96)+"vw";e.style.fontSize=rnd(16,34)+"px";
+  e.style.animationDuration=rnd(7,13)+"s";
+  fx.appendChild(e);setTimeout(function(){e.remove()},13500);
+}
+setInterval(floaty,650);for(var i=0;i<8;i++)setTimeout(floaty,i*120);
+
+/* ===== ניווט בין מסכים ===== */
+function show(id){
+  document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("on")});
+  $(id).classList.add("on");window.scrollTo(0,0);
+}
+$("ask").addEventListener("click",function(){show("s2")});
+
+/* ===== הכפתור שלא מוכן לקבל לא ===== */
+var no=$("no"),yes=$("yes"),wrap=$("nowrap"),msg=$("msg");
+var tries=0,last=0,morphed=false;
+var funny=["חחחח חשבת שתצליחי? 😈","אין דבר כזה לא, גברת! 😂💕","נסי שוב יפה שלי 🤭","הכפתור הזה בחיים לא ייתן לך לסרב 😂","אופס, הוא ברח לך 🏃‍♂️💨","כמעט תפסת אותו! 😜","הוא ממש לא מסכים לשמוע לא 🙈"];
+var sweet=["נו באמת, כולה דייט אחד קטן… 🥺","אני אפילו אביא לך שוקולד 🍫💕","החתולה מתחננת בשמי 🐱🥹","עוד קצת ותיתני לי הזדמנות 💗","את יודעת שאת רוצה… כפתור הכן מחכה לך 😏❤️","אני מבטיח שיהיה כיף, ואת תצחקי 🤍","אני לא מוותר עלייך אף פעם 😘"];
+function say(t){msg.innerHTML="";var s=document.createElement("span");s.textContent=t;msg.appendChild(s)}
+function overlap(a,b,pad){return !(a.r+pad<b.l||a.l-pad>b.r||a.b+pad<b.t||a.t-pad>b.b)}
+function dodge(){
+  if(morphed)return;
+  var now=Date.now();if(now-last<280)return;last=now;
+  tries++;
+  var vw=window.innerWidth,vh=window.innerHeight,m=12;
+  var r=no.getBoundingClientRect(),w=r.width,h=r.height;
+  if(!no.classList.contains("run")){
+    wrap.style.width=w+"px";wrap.style.height=h+"px";
+    no.style.left=r.left+"px";no.style.top=r.top+"px";
+    no.classList.add("run");void no.offsetWidth;
+  }
+  var y=yes.getBoundingClientRect(),yb={l:y.left,r:y.right,t:y.top,b:y.bottom};
+  var cur=no.getBoundingClientRect(),best=null;
+  for(var k=0;k<60;k++){
+    var x=rnd(m,Math.max(m,vw-w-m)),yy=rnd(m,Math.max(m,vh-h-m));
+    var box={l:x,r:x+w,t:yy,b:yy+h};
+    if(overlap(box,yb,24))continue;
+    if(Math.hypot(x-cur.left,yy-cur.top)<Math.min(140,vw*.35))continue;
+    best={x:x,y:yy};break;
+  }
+  if(!best){ /* גיבוי: פינה רחוקה שלא חופפת */
+    var cs=[[m,m],[vw-w-m,m],[m,vh-h-m],[vw-w-m,vh-h-m]];
+    for(var c=0;c<cs.length;c++){var bx={l:cs[c][0],r:cs[c][0]+w,t:cs[c][1],b:cs[c][1]+h};if(!overlap(bx,yb,24)){best={x:cs[c][0],y:cs[c][1]};break}}
+    if(!best)best={x:m,y:m};
+  }
+  no.style.left=best.x+"px";no.style.top=best.y+"px";
+  var list=tries>5?sweet:funny;say(list[Math.floor(Math.random()*list.length)]);
+  if(tries>=10)morph();
+}
+function morph(){
+  setTimeout(function(){
+    morphed=true;no.textContent="טוב, כן 🥰";
+    no.style.background="linear-gradient(180deg,#8fe8b8,#3cae78)";no.style.boxShadow="0 5px 0 #26805a";
+    say("יאללה, הוותרת? הכפתור נשבר ממך 🥹💕");
+    var r=no.getBoundingClientRect(),vw=innerWidth,vh=innerHeight;
+    var y=yes.getBoundingClientRect();
+    if(overlap({l:r.left,r:r.right,t:r.top,b:r.bottom},{l:y.left,r:y.right,t:y.top,b:y.bottom},10)){no.style.left="12px";no.style.top=Math.max(12,vh-r.height-12)+"px"}
+  },420);
+}
+/* מחשב: התחמקות כשהעכבר מתקרב; טלפון: כשנוגעים */
+document.addEventListener("pointermove",function(e){
+  if(e.pointerType!=="mouse"||morphed||!$("s2").classList.contains("on"))return;
+  var r=no.getBoundingClientRect();
+  var d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height/2));
+  if(d<Math.max(r.width,r.height)*.9)dodge();
+});
+["pointerdown","touchstart","mouseenter","focus"].forEach(function(ev){
+  no.addEventListener(ev,function(e){
+    if(morphed)return;
+    if(e.cancelable)e.preventDefault();
+    dodge();
+  },{passive:false});
+});
+no.addEventListener("click",function(e){
+  if(morphed){celebrate();return}
+  e.preventDefault();dodge();
+});
+window.addEventListener("resize",function(){
+  if(!no.classList.contains("run"))return;
+  var r=no.getBoundingClientRect(),vw=innerWidth,vh=innerHeight;
+  no.style.left=Math.min(Math.max(12,r.left),Math.max(12,vw-r.width-12))+"px";
+  no.style.top=Math.min(Math.max(12,r.top),Math.max(12,vh-r.height-12))+"px";
+});
+
+/* ===== כן! ===== */
+var confettiTimer=null;
+function burst(){
+  if(calm)return;
+  for(var i=0;i<34;i++){(function(i){setTimeout(function(){
+    var e=document.createElement("span");e.className="fl";
+    e.textContent=["❤️","💖","💗","💕","🌷","🌹"][i%6];
+    e.style.left=rnd(0,95)+"vw";e.style.fontSize=rnd(22,44)+"px";
+    e.style.animationDuration=rnd(3.5,6.5)+"s";e.style.opacity=1;
+    fx.appendChild(e);setTimeout(function(){e.remove()},7000);
+  },i*70)})(i)}
+}
+function confetti(){
+  if(calm)return;
+  var cols=["#ff7fa5","#e8456b","#ffc2d4","#fff","#ffd166","#7fd8a8"];
+  var e=document.createElement("span");e.className="fall";
+  if(Math.random()<.35){e.textContent=["🌸","🌷","💗","🌹"][Math.floor(Math.random()*4)];e.style.fontSize=rnd(18,30)+"px"}
+  else{e.style.width=rnd(7,12)+"px";e.style.height=rnd(10,18)+"px";e.style.background=cols[Math.floor(Math.random()*cols.length)];e.style.borderRadius="2px"}
+  e.style.left=rnd(0,98)+"vw";e.style.animationDuration=rnd(3.5,7)+"s";
+  fx.appendChild(e);setTimeout(function(){e.remove()},7500);
+}
+function celebrate(){
+  show("s3");burst();
+  for(var i=0;i<60;i++)setTimeout(confetti,i*40);
+  clearInterval(confettiTimer);confettiTimer=setInterval(confetti,260);
+}
+yes.addEventListener("click",celebrate);
+
+/* ===== תכנון הדייט ===== */
+$("plan").addEventListener("click",function(){show("s4");burst()});
+var opts=document.querySelectorAll(".opt"),wa=$("wa");
+opts.forEach(function(b){
+  b.addEventListener("click",function(){
+    opts.forEach(function(o){o.classList.remove("sel")});b.classList.add("sel");
+    $("choiceMsg").textContent=b.dataset.m;
+    var t="היי אהוב שלי 💕 בחרתי: "+b.dataset.k+" ❤️ כבר מתרגשת מהדייט שלנו! 🥰";
+    wa.href="https://wa.me/?text="+encodeURIComponent(t);wa.hidden=false;burst();
+  });
+});
+})();
+</script>
+</body>
+</html>
